@@ -2,6 +2,11 @@ import React, {useEffect, useState} from 'react'
 import './App.css';
 import axios from 'axios';
 import styled from 'styled-components';
+import sun from './images/sun2.png';
+import partCloudy from './images/partCloudy.png';
+import lightRain from './images/lightRain.png';
+import clouds from './images/clouds.png';
+import uv from './images/uv.png'
 
 function App() {
 
@@ -64,13 +69,13 @@ function App() {
         <div>
         <img 
         src={weather.current.condition.text === 'Partly cloudy' ? 
-        'https://play-lh.googleusercontent.com/RRdFlzBWL39t-y-jx8HkPh7ij7sh0v4NrmcHB7Nc9VqFu0M1QfQKcOvqX6wqjc-b8A' 
-        : weather.current.condition.text === 'Clear' ? 'https://cdn.iconscout.com/icon/free/png-512/sun-bright-rays-sunny-weather-33960.png' 
-        : weather.current.condition.text === 'Overcast' ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Weather-overcast.svg/1200px-Weather-overcast.svg.png'
-        : weather.current.condition.text === 'Light rain' ? 'https://lh3.googleusercontent.com/proxy/DClfjlWJQUGNpYmD12UEAX_MkzdNbEvZPzgBwpUdzsyxJRK1EP2RmLYsL6_qxTvtBo_9tH8rrWVPs13iWiGfk78EUVbiTJ-686P0WhO_eep1JpOgwd_AW_mou-A_bLPJditnUql19uhN'
-        : weather.current.condition.text === 'Mist' ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Weather-overcast.svg/1200px-Weather-overcast.svg.png'
-        : weather.current.condition.text === 'Sunny' ? 'https://cdn.iconscout.com/icon/free/png-512/sun-bright-rays-sunny-weather-33960.png' 
-        : weather.current.condition.text === 'Light rain shower' ? 'https://lh3.googleusercontent.com/proxy/DClfjlWJQUGNpYmD12UEAX_MkzdNbEvZPzgBwpUdzsyxJRK1EP2RmLYsL6_qxTvtBo_9tH8rrWVPs13iWiGfk78EUVbiTJ-686P0WhO_eep1JpOgwd_AW_mou-A_bLPJditnUql19uhN'
+        `${partCloudy}`
+        : weather.current.condition.text === 'Clear' ? `${sun}`
+        : weather.current.condition.text === 'Overcast' ? `${clouds}`
+        : weather.current.condition.text === 'Light rain' ? `${lightRain}`
+        : weather.current.condition.text === 'Mist' ? `${clouds}`
+        : weather.current.condition.text === 'Sunny' ? `${sun}`
+        : weather.current.condition.text === 'Light rain shower' ? `${lightRain}`
         : ""
         } alt={weather.current.condition.text} />
         <h5 onClick={setToFaren}>{faren ? `${weather.current.temp_c} °C` :  `${weather.current.temp_f} °F`}</h5>
@@ -82,7 +87,7 @@ function App() {
     {weather && (
       <div >
         <img className="feel"
-        src={'https://image.flaticon.com/icons/png/512/2025/2025520.png'} alt={weather.current.condition.text} />
+        src={uv} alt={weather.current.condition.text} />
         <h5>{weather.current.uv}</h5>
         <h4>UV Index</h4>
       </div>
@@ -118,7 +123,7 @@ const WeatherWrapper = styled.div`
   }
 
   h5 {
-    margin:0;
+    margin-top:50px;
     font-size:40px;
     font-weight:200;
   }
@@ -169,15 +174,47 @@ const WeatherWrapper = styled.div`
       border-bottom-right-radius:10px;
     }
   }
+
+  @media (max-width:700px) {
+      width:100vw;
+      height:100vh;
+      overflow-x:hidden;
+    }
 `
 
 const MainWrapper = styled.div`
   margin:60px 100px;
 
+    @media (max-width:700px) {
+      width:100vw;
+      overflow-x:hidden;
+    }
 
   img {
-    width:250px;
-    margin: 20px 0;
+    width:180px;
+    object-fit:cover;
+  }
+
+  h5 {
+    margin:0;
+    margin-top: 80px;
+    font-size:40px;
+    font-weight:200;
+  }
+  h4 {
+    font-size:20px;
+  }
+
+  h1 {
+    margin-bottom:5px;
+  }
+  h2 {
+    margin-top:10px;
+  }
+
+  p {
+    font-weight:200;
+
   }
 
 `
@@ -197,14 +234,9 @@ const WindWrapper = styled.div`
   align-items:center;
   justify-content:center;
 
-
-  .wind {
-      width:200px;
-  }
-
   img {
-    width:300px;
-    margin: 20px 0 70px 0;
+    width:170px;
+    margin-bottom:45px;
   }
 
   h5 {
@@ -214,6 +246,7 @@ const WindWrapper = styled.div`
   }
   h4 {
     font-size:20px;
+    margin-bottom:30px;
   }
 
   h1 {
@@ -239,8 +272,8 @@ const FeelWrapper = styled.div`
   justify-content:center;
 
   img {
-    width:200px;
-    margin: 10px 0 70px 0;
+    width:140px;
+    margin-bottom:70px;
   }
 
   h5 {
