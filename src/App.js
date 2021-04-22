@@ -184,10 +184,16 @@ const WeatherWrapper = styled.div`
 
 const MainWrapper = styled.div`
   margin:60px 100px;
+  width:100%;
+  display:flex;
+  align-items:center;
+  text-align:center;
+  justify-content:center;
 
     @media (max-width:700px) {
       width:100vw;
       overflow-x:hidden;
+      scroll-snap-align: start;
     }
 
   img {
@@ -200,9 +206,11 @@ const MainWrapper = styled.div`
     margin-top: 80px;
     font-size:40px;
     font-weight:200;
+    width:100%;
   }
   h4 {
     font-size:20px;
+    width:100%;
   }
 
   h1 {
@@ -225,6 +233,10 @@ const ConditionWrapper = styled.div`
   justify-content:space-between;
   text-align:center;
   align-items:center;
+
+  @media (max-width:700px) {
+    scroll-snap-type: x mandatory;
+  }
 `
 
 const WindWrapper = styled.div`
@@ -233,6 +245,10 @@ const WindWrapper = styled.div`
   text-align:center;
   align-items:center;
   justify-content:center;
+
+  @media (max-width:700px) {
+      scroll-snap-align:end;
+    }
 
   img {
     width:170px;
@@ -270,6 +286,10 @@ const FeelWrapper = styled.div`
   text-align:center;
   align-items:center;
   justify-content:center;
+
+  @media (max-width:700px) {
+      scroll-snap-align: start;
+    }
 
   img {
     width:140px;
