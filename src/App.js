@@ -15,7 +15,7 @@ function App() {
   const [faren, setFaren] = useState(true)
 
   useEffect(() => {
-      axios.get( 'http://api.weatherapi.com/v1/current.json?key=45085b5aef344e6cb30123316212004&q=Wicklow')
+      axios.get( 'https://api.weatherapi.com/v1/current.json?key=45085b5aef344e6cb30123316212004&q=Wicklow')
       .then(data => {
           setWeather(data.data)
       })
